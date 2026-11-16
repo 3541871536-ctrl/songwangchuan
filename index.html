@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070706">
+  <meta name="description" content="顺风化吉——以电影化滚动叙事呈现送王船仪式。A cinematic bilingual experience inspired by the Wang Ye boat ritual.">
+  <title>顺风化吉 · A Voyage of Vows</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="page-progress" aria-hidden="true"><span></span></div>
+  <div class="cursor-aura" aria-hidden="true"><span></span></div>
+  <header class="site-header">
+    <nav class="site-nav site-nav--left" aria-label="主导航">
+      <a href="#story"><span>仪式</span><small>RITE</small></a>
+      <a href="#journey"><span>历程</span><small>JOURNEY</small></a>
+    </nav>
+    <a class="wordmark" href="#opening" aria-label="顺风化吉首页">
+      <span class="wordmark__cn">顺风化吉</span>
+      <span class="wordmark__en">SHUNFENG · HUAJI</span>
+    </a>
+    <nav class="site-nav site-nav--right" aria-label="次级导航">
+      <a href="#finale"><span>化吉</span><small>RETURN</small></a>
+      <button class="nav-button prayer-trigger" type="button">
+        <span>祈愿</span><small>MAKE A VOW</small>
+      </button>
+    </nav>
+  </header>
+
+  <aside class="chapter-rail" aria-label="章节导航">
+    <a href="#opening" data-track="opening"><span>序</span><i></i></a>
+    <a href="#story" data-track="story"><span>引</span><i></i></a>
+    <a href="#journey" data-track="journey"><span>程</span><i></i></a>
+    <a href="#chapter-build" data-track="chapter-build"><span>壹</span><i></i></a>
+    <a href="#chapter-invite" data-track="chapter-invite"><span>贰</span><i></i></a>
+    <a href="#chapter-procession" data-track="chapter-procession"><span>叁</span><i></i></a>
+    <a href="#chapter-sendoff" data-track="chapter-sendoff"><span>肆</span><i></i></a>
+    <a href="#finale" data-track="finale"><span>终</span><i></i></a>
+  </aside>
+
+  <audio id="site-audio" src="assets/audio/mountain-emperor.mp3" loop preload="metadata"></audio>
+  <audio id="site-audio-climax" src="assets/audio/clash-defiant.mp3" loop preload="metadata"></audio>
+  <button class="sound-toggle" type="button" aria-pressed="false" aria-label="开启气势仪式声景">
+    <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="sound-copy">
+      <b>开启声景</b>
+      <small>WAR DRUMS · EPIC RITE</small>
+    </span>
+  </button>
+
+  <div class="atmosphere" aria-hidden="true">
+    <canvas id="atmosphere"></canvas>
+  </div>
+
+  <div class="stage" aria-hidden="true">
+    <div class="stage__inner">
+      <canvas id="incense"></canvas>
+      <canvas id="incense-smoke" aria-hidden="true"></canvas>
+      <span class="stage__halo"></span>
+    </div>
+    <div class="asset-progress" id="asset-progress">请香 · <span>0 / 96</span></div>
+    <div class="incense-readout" aria-hidden="true">
+      <span>香火 / OFFERING</span>
+      <i><b></b></i>
+      <em>00</em>
+    </div>
+  </div>
+
+  <main>
+    <section class="opening" id="opening" data-section="opening" aria-labelledby="opening-title">
+      <div class="opening__base" aria-hidden="true"></div>
+      <div class="opening__reveal-window" id="opening-reveal-window" aria-hidden="true">
+        <video
+          class="opening__reveal"
+          id="opening-reveal"
+          src="assets/opening/wangchuan-fire.webm"
+          poster="assets/opening/wangchuan-poster.webp"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          disablepictureinpicture
+        ></video>
+      </div>
+      <div class="opening__shade" aria-hidden="true"></div>
+      <div class="opening__fire-wash" aria-hidden="true"></div>
+      <div class="opening__grid" aria-hidden="true"></div>
+
+      <div class="opening__frame" aria-hidden="true">
+        <span class="opening__corner opening__corner--tl"></span>
+        <span class="opening__corner opening__corner--tr"></span>
+        <span class="opening__corner opening__corner--bl"></span>
+        <span class="opening__corner opening__corner--br"></span>
+        <span class="opening__dash opening__dash--top"></span>
+        <span class="opening__dash opening__dash--bottom"></span>
+      </div>
+
+      <svg class="opening__cloud" viewBox="0 0 520 290" fill="none" aria-hidden="true">
+        <path d="M18 228C84 228 91 194 136 201C161 205 167 219 196 219C236 219 239 185 279 185C312 185 325 204 353 204C388 204 397 176 433 176C464 176 481 192 510 190" stroke="currentColor"/>
+        <path d="M68 169C68 151 83 137 102 137C121 137 136 151 136 169C136 156 147 145 161 145C177 145 189 157 189 172C189 151 204 135 224 135C244 135 259 151 259 171C259 187 247 199 231 199H105C84 199 68 186 68 169Z" stroke="currentColor"/>
+        <path d="M224 110C224 97 234 87 247 87C260 87 270 97 270 110C270 100 278 92 288 92C299 92 308 101 308 112C308 97 319 85 334 85C349 85 360 97 360 112C360 124 351 132 339 132H251C236 132 224 123 224 110Z" stroke="currentColor"/>
+        <path d="M292 251C338 251 348 226 380 226C410 226 419 248 448 248C469 248 487 237 509 237" stroke="currentColor" stroke-dasharray="2 7"/>
+        <circle cx="147" cy="67" r="3" fill="currentColor"/>
+        <circle cx="392" cy="149" r="2" fill="currentColor"/>
+      </svg>
+
+      <div class="opening__arcs" aria-hidden="true">
+        <svg viewBox="0 0 440 760" fill="none">
+          <defs>
+            <linearGradient id="opening-arc-a" x1="-122" y1="-30" x2="207" y2="391" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#f1eadb" stop-opacity="0"/>
+              <stop offset=".24" stop-color="#f1eadb" stop-opacity=".55"/>
+              <stop offset=".74" stop-color="#f1eadb" stop-opacity=".32"/>
+              <stop offset="1" stop-color="#f1eadb" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="opening-arc-b" x1="111" y1="-27" x2="88" y2="642" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#f1eadb" stop-opacity="0"/>
+              <stop offset=".25" stop-color="#f1eadb" stop-opacity=".48"/>
+              <stop offset=".76" stop-color="#f1eadb" stop-opacity=".28"/>
+              <stop offset="1" stop-color="#f1eadb" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="opening-arc-c" x1="336" y1="189" x2="32" y2="737" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#f1eadb" stop-opacity="0"/>
+              <stop offset=".25" stop-color="#f1eadb" stop-opacity=".42"/>
+              <stop offset=".78" stop-color="#f1eadb" stop-opacity=".22"/>
+              <stop offset="1" stop-color="#f1eadb" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g class="opening__arc-group" style="--arc-delay:.45s;--dot-delay:1.35s">
+            <path class="opening__arc-line" d="M-122 -30 A330 330 0 0 1 207 391" stroke="url(#opening-arc-a)"/>
+            <circle class="opening__arc-ring" cx="119" cy="63" r="7" stroke="#f1eadb"/>
+            <circle class="opening__arc-dot" cx="119" cy="63" r="3.2" fill="#f1eadb"/>
+            <text class="opening__arc-number" x="135" y="67" fill="#f1eadb">4<tspan dx="1" dy="-10">程</tspan></text>
+            <text class="opening__arc-label" x="137" y="87" fill="#f1eadb">仪 式 章 节</text>
+          </g>
+          <g class="opening__arc-group" style="--arc-delay:.68s;--dot-delay:1.58s">
+            <path class="opening__arc-line" d="M111 -27 A395 395 0 0 1 88 642" stroke="url(#opening-arc-b)"/>
+            <circle class="opening__arc-ring" cx="285" cy="314" r="7" stroke="#f1eadb"/>
+            <circle class="opening__arc-dot" cx="285" cy="314" r="3.2" fill="#f1eadb"/>
+            <text class="opening__arc-number" x="269" y="318" fill="#f1eadb" text-anchor="end">1<tspan dx="1" dy="-10">愿</tspan></text>
+            <text class="opening__arc-label" x="267" y="338" fill="#f1eadb" text-anchor="end">同 赴 沧 海</text>
+          </g>
+          <g class="opening__arc-group" style="--arc-delay:.9s;--dot-delay:1.8s">
+            <path class="opening__arc-line" d="M336 189 A460 460 0 0 1 32 737" stroke="url(#opening-arc-c)"/>
+            <circle class="opening__arc-ring" cx="221" cy="620" r="7" stroke="#f1eadb"/>
+            <circle class="opening__arc-dot" cx="221" cy="620" r="3.2" fill="#f1eadb"/>
+            <text class="opening__arc-number" x="237" y="624" fill="#f1eadb">600<tspan dx="1" dy="-10">+</tspan></text>
+            <text class="opening__arc-label" x="239" y="644" fill="#f1eadb">海 上 薪 传</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="opening__copy">
+        <div class="opening__lockup">
+          <span class="opening__side-note" aria-hidden="true">向海而生</span>
+          <span class="opening__seal" aria-hidden="true"><b>顺</b><b>风</b><b>化</b><b>吉</b></span>
+          <h1 id="opening-title">顺风<br><span>化吉</span></h1>
+          <svg class="opening__ink-wave" viewBox="0 0 360 28" fill="none" aria-hidden="true">
+            <path d="M2 17C48 17 44 8 82 8C116 8 110 19 147 19C183 19 188 10 222 10C257 10 251 20 286 20C314 20 330 15 358 15"/>
+            <path d="M40 25C90 25 111 20 150 20C190 20 210 26 251 26C291 26 310 22 348 22"/>
+          </svg>
+          <span class="opening__underprint" aria-hidden="true">闽海一脉 · 灯火相传</span>
+        </div>
+        <p class="opening__lead">
+          一船灯火，载一境祈愿。潮起时启程，风止处化吉。愿每一份敬畏与祝愿，都循着海风抵达远方。
+        </p>
+        <div class="opening__actions">
+          <button class="opening__cta" type="button" aria-pressed="false">
+            <span>随船启程</span>
+          </button>
+          <p class="opening__hint">
+            MOVE TO ILLUMINATE
+            <span>移动光标，点亮王船</span>
+          </p>
+        </div>
+      </div>
+
+      <button class="opening__scroll" type="button" aria-label="进入香火叙事">
+        <i></i><span>向下 · 入海</span>
+      </button>
+
+      <svg class="opening__shore" viewBox="0 0 1440 150" preserveAspectRatio="none" fill="none" aria-hidden="true">
+        <path d="M-40 118C105 118 149 79 271 88C396 97 426 128 546 122C675 116 723 66 842 75C979 85 990 126 1121 119C1244 112 1312 80 1482 93"/>
+        <path d="M-30 136C87 136 151 112 263 119C382 126 425 145 533 140C665 134 725 101 830 107C952 114 1014 143 1135 137C1268 130 1344 108 1470 116" stroke-dasharray="2 9"/>
+      </svg>
+    </section>
+
+    <section class="hero" id="hero">
+      <div class="hero-scene" aria-hidden="true">
+        <img class="plane plane--back" src="assets/scenes/hero-bg.webp" alt="">
+        <img class="hero-foreground hero-foreground--left" src="assets/scenes/hero-left.webp" alt="">
+        <img class="hero-foreground hero-foreground--right" src="assets/scenes/hero-right.webp" alt="">
+        <div class="plane plane--mist plane--mist-a"></div>
+        <div class="plane plane--mist plane--mist-b"></div>
+        <div class="light-shaft light-shaft--left"></div>
+        <div class="light-shaft light-shaft--right"></div>
+        <div class="lantern-glow lantern-glow--left"></div>
+        <div class="lantern-glow lantern-glow--right"></div>
+      </div>
+
+      <h1 class="sr-only">顺风化吉</h1>
+      <div class="hero-title-art" aria-hidden="true">
+        <span class="hero-title-word hero-title-word--back" data-split="chars">顺风</span>
+        <span class="hero-title-word hero-title-word--front" data-split="chars">化吉</span>
+      </div>
+
+      <div class="hero-editorial" aria-hidden="true">
+        <span class="hero-editorial__ghost">願</span>
+        <span class="hero-editorial__rule"></span>
+        <span class="hero-editorial__cool">EAST CHINA SEA<br>24°54′N · 118°06′E</span>
+        <span class="hero-editorial__warm">FIRE / TIDE / RETURN</span>
+        <span class="hero-editorial__vertical">香烟有信　潮汐无边</span>
+        <span class="hero-editorial__folio">王船仪式 / VOL. 01</span>
+      </div>
+
+      <div class="hero-copy">
+        <p class="eyebrow" data-reveal>联合国教科文组织人类非物质文化遗产 · 送王船</p>
+        <p class="hero-subtitle" data-reveal>
+          A VOYAGE OF VOWS
+          <span>向海而行，把平安带回来。</span>
+        </p>
+      </div>
+
+      <div class="hero-meta" data-reveal>
+        <span>闽南沿海 · 王船仪式</span>
+        <span>SCROLL TO DEPART</span>
+      </div>
+      <div class="scroll-line" aria-hidden="true"><span></span></div>
+    </section>
+
+    <section class="story" id="story" data-section="story">
+      <div class="section-index" aria-hidden="true">01 / VOW</div>
+      <div class="story-editorial" aria-hidden="true">
+        <span class="story-editorial__ghost">願</span>
+        <span class="story-editorial__cool">INCENSE STUDY<br>00—100</span>
+        <span class="story-editorial__vertical">向下 · 火光渐短 · 愿念渐长</span>
+        <span class="story-editorial__warm-line"></span>
+      </div>
+      <p class="story-copy" id="story-copy">
+        王船不是一艘船。它是被托付的愿望，是向海而行的一年，是一村人共同写下的平安。木骨承载香火，帆影承接风信。人们送它远行，也把一个更好的来年，轻轻交还给自己。造船的人把名字留在木纹里，巡境的人把脚步留在石板上，送行的人把未说出口的话交给风。潮水会抹平足迹，却不会带走愿望；当火光暗下去，海面仍记得每一个曾经抬头的人。
+        <span class="story-copy__en">The royal boat is not merely a vessel. It carries the vows of a village, the scent of incense, and the promise of a safe return. Every plank holds the touch of a hand, every flag remembers a name, and every footstep in the old lanes becomes part of the prayer. The tide may erase the footprints, but it will not carry the vow away.</span>
+      </p>
+      <div class="story-caption" aria-hidden="true">
+        <span>以火送行</span>
+        <span>LET THE TIDE REMEMBER</span>
+      </div>
+    </section>
+
+    <section class="passage" id="journey" aria-labelledby="journey-title">
+      <div class="passage__head">
+        <p class="eyebrow" data-reveal>THE PASSAGE · 仪式五程</p>
+        <h2 id="journey-title" data-split="chars">一程一愿</h2>
+        <p data-reveal>
+          从木骨到海面，从请王到化吉。五段路程，不是仪式的目录，而是一群人共同完成的一次告别。
+        </p>
+      </div>
+      <nav class="passage__track" aria-label="仪式过程">
+        <span class="passage__line"><i></i></span>
+        <a href="#chapter-build" data-stage="chapter-build">
+          <b>01</b><strong>造舟</strong><small>THE VESSEL</small>
+        </a>
+        <a href="#chapter-invite" data-stage="chapter-invite">
+          <b>02</b><strong>请王</strong><small>THE INVITATION</small>
+        </a>
+        <a href="#chapter-procession" data-stage="chapter-procession">
+          <b>03</b><strong>巡境</strong><small>THE PASSAGE</small>
+        </a>
+        <a href="#chapter-sendoff" data-stage="chapter-sendoff">
+          <b>04</b><strong>送王</strong><small>THE DEPARTURE</small>
+        </a>
+        <a href="#finale" data-stage="finale">
+          <b>05</b><strong>化吉</strong><small>THE RETURN</small>
+        </a>
+      </nav>
+    </section>
+
+    <section class="chapter" id="chapter-build" data-section="chapter">
+      <div class="chapter-heading">
+        <p class="eyebrow" data-reveal>CHAPTER 01 · 王船工坊</p>
+        <h2 class="chapter-word" data-split="chars">造舟</h2>
+        <p class="chapter-word__en" data-reveal>The Vessel</p>
+      </div>
+
+      <div class="chapter-grid">
+        <figure class="chapter-visual" data-reveal>
+          <div class="arch-frame">
+            <img class="arch-layer arch-layer--bg" src="assets/scenes/chapter-build-bg.webp" alt="昏暗的王船工坊">
+            <img class="arch-layer arch-layer--mid" src="assets/scenes/chapter-build-mid.webp" alt="尚未完成的王船木骨">
+            <img class="arch-layer arch-layer--front" src="assets/scenes/chapter-build-front.webp" alt="工坊前景木梁与工具">
+            <span class="arch-outline"></span>
+          </div>
+          <figcaption>
+            <span>木骨未成，潮声先至</span>
+            <span>SCENE STUDY · 2026</span>
+          </figcaption>
+        </figure>
+
+        <div class="chapter-copy">
+          <p class="chapter-lead" data-reveal>
+            一木一钉，先听见潮声，才学会抵达。
+          </p>
+          <p class="chapter-translation" data-reveal>
+            A plank learns the tide before it learns the sea.
+          </p>
+          <dl class="chapter-notes">
+            <div>
+              <dt>地域</dt>
+              <dd>闽南沿海 · 王船工坊</dd>
+            </div>
+            <div>
+              <dt>工序</dt>
+              <dd>择木 · 立骨 · 覆板 · 安帆</dd>
+            </div>
+          </dl>
+          <p class="chapter-signature" data-reveal>以木为骨，以愿为帆。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter chapter--reverse" id="chapter-invite" data-section="chapter">
+      <div class="chapter-heading">
+        <p class="eyebrow" data-reveal>CHAPTER 02 · 庙埕安座</p>
+        <h2 class="chapter-word" data-split="chars">请王</h2>
+        <p class="chapter-word__en" data-reveal>The Invitation</p>
+      </div>
+
+      <div class="chapter-grid">
+        <figure class="chapter-visual" data-reveal>
+          <div class="arch-frame">
+            <img class="arch-layer arch-layer--bg" src="assets/scenes/chapter-invite-bg.webp" alt="烛火映照的庙宇内殿">
+            <img class="arch-layer arch-layer--mid" src="assets/scenes/chapter-invite-mid.webp" alt="安座中的神轿">
+            <img class="arch-layer arch-layer--front" src="assets/scenes/chapter-invite-front.webp" alt="前景庙柱与幡旗">
+            <span class="arch-outline"></span>
+          </div>
+          <figcaption>
+            <span>香烟起处，众愿有主</span>
+            <span>SCENE STUDY · 02</span>
+          </figcaption>
+        </figure>
+
+        <div class="chapter-copy">
+          <p class="chapter-lead" data-reveal>
+            香火落座，众愿有主。一炷清香，唤海上远客。
+          </p>
+          <p class="chapter-translation" data-reveal>
+            Incense takes its seat; every vow finds a name.
+          </p>
+          <dl class="chapter-notes">
+            <div>
+              <dt>场景</dt>
+              <dd>庙埕 · 王船安座</dd>
+            </div>
+            <div>
+              <dt>声音</dt>
+              <dd>诵经 · 鼓点 · 香灰落案</dd>
+            </div>
+          </dl>
+          <p class="chapter-signature" data-reveal>愿有所寄，行有所向。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="chapter-procession" data-section="chapter">
+      <div class="chapter-heading">
+        <p class="eyebrow" data-reveal>CHAPTER 03 · 街巷巡境</p>
+        <h2 class="chapter-word" data-split="chars">巡境</h2>
+        <p class="chapter-word__en" data-reveal>The Passage</p>
+      </div>
+
+      <div class="chapter-grid">
+        <figure class="chapter-visual" data-reveal>
+          <div class="arch-frame">
+            <img class="arch-layer arch-layer--bg" src="assets/scenes/chapter-procession-bg.webp" alt="灯笼照亮的老街">
+            <img class="arch-layer arch-layer--mid" src="assets/scenes/chapter-procession-mid.webp" alt="巡境队伍护送王船">
+            <img class="arch-layer arch-layer--front" src="assets/scenes/chapter-procession-front.webp" alt="近景人群与旗帜">
+            <span class="arch-outline"></span>
+          </div>
+          <figcaption>
+            <span>鼓声过街，香火随行</span>
+            <span>SCENE STUDY · 03</span>
+          </figcaption>
+        </figure>
+
+        <div class="chapter-copy">
+          <p class="chapter-lead" data-reveal>
+            鼓声过街，祈愿顺着海风巡游。走过人间，才去往海上。
+          </p>
+          <p class="chapter-translation" data-reveal>
+            Drums cross the old lanes; blessings travel with the sea wind.
+          </p>
+          <dl class="chapter-notes">
+            <div>
+              <dt>路线</dt>
+              <dd>庙门 · 老街 · 港口</dd>
+            </div>
+            <div>
+              <dt>队伍</dt>
+              <dd>旗队 · 鼓阵 · 护送信众</dd>
+            </div>
+          </dl>
+          <p class="chapter-signature" data-reveal>众人同行，风便有了方向。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter chapter--reverse" id="chapter-sendoff" data-section="chapter">
+      <div class="chapter-heading">
+        <p class="eyebrow" data-reveal>CHAPTER 04 · 海上送王</p>
+        <h2 class="chapter-word" data-split="chars">送王</h2>
+        <p class="chapter-word__en" data-reveal>The Departure</p>
+      </div>
+
+      <div class="chapter-grid">
+        <figure class="chapter-visual" data-reveal>
+          <div class="arch-frame">
+            <img class="arch-layer arch-layer--bg" src="assets/scenes/chapter-sendoff-bg.webp" alt="夜色中的海面与低月">
+            <img class="arch-layer arch-layer--mid" src="assets/scenes/chapter-sendoff-mid.webp" alt="海边焚化的王船与升腾的火光">
+            <img class="arch-layer arch-layer--front" src="assets/scenes/chapter-sendoff-front.webp" alt="送行人群与手中香火">
+            <span class="fire-licker" aria-hidden="true"></span>
+            <span class="arch-outline"></span>
+          </div>
+          <figcaption>
+            <span>火交给潮，愿交给远方</span>
+            <span>SCENE STUDY · 04</span>
+          </figcaption>
+        </figure>
+
+        <div class="chapter-copy">
+          <p class="chapter-lead" data-reveal>
+            火光把愿望交给潮汐。不是告别，是把平安托付给更远的地方。
+          </p>
+          <p class="chapter-translation" data-reveal>
+            Fire gives the vows to the tide; the royal boat begins its voyage.
+          </p>
+          <dl class="chapter-notes">
+            <div>
+              <dt>时刻</dt>
+              <dd>黄昏 · 退潮 · 海风起</dd>
+            </div>
+            <div>
+              <dt>心愿</dt>
+              <dd>消灾 · 纳福 · 海上平安</dd>
+            </div>
+          </dl>
+          <p class="chapter-signature" data-reveal>火尽之后，愿望仍在远航。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="interlude" aria-label="仪式引语">
+      <p class="interlude__small" data-reveal>送王，亦是送愿。</p>
+      <p class="interlude__main" data-split="chars">向海而行 · 顺风化吉</p>
+      <p class="interlude__translation" data-reveal>GO WITH THE TIDE · RETURN IN PEACE</p>
+    </section>
+
+    <section class="finale" id="finale" data-section="finale">
+      <div class="finale-sticky">
+        <div class="finale-scene" aria-hidden="true">
+          <div class="finale-scroll">
+            <div class="finale-scroll__roller finale-scroll__roller--left"><i></i></div>
+            <div class="finale-scroll__sheet">
+              <div class="finale-scroll__paper">
+                <img class="finale-scroll__photo" src="assets/scenes/homage-real-bg.webp" alt="">
+                <span class="finale-scroll__sun"></span>
+                <span class="finale-scroll__mountain finale-scroll__mountain--far"></span>
+                <span class="finale-scroll__mountain finale-scroll__mountain--near"></span>
+                <span class="finale-scroll__ink-wash"></span>
+                <span class="finale-scroll__waves"></span>
+                <span class="finale-scroll__mark">闽南 · 送王船</span>
+                <span class="finale-scroll__inscription">潮声有信<br>所愿长存</span>
+                <span class="finale-scroll__verse-en">THE TIDE RECEDES · THE VOWS REMAIN</span>
+                <span class="finale-seal" aria-label="顺风化吉">
+                  <b>顺</b><b>风</b><b>化</b><b>吉</b>
+                </span>
+                <p class="finale-caption finale-caption--left">顺风，是向前的祝愿</p>
+                <p class="finale-caption finale-caption--right">化吉，是归来的答案</p>
+              </div>
+            </div>
+            <div class="finale-scroll__roller finale-scroll__roller--right"><i></i></div>
+          </div>
+        </div>
+        <div class="finale-word finale-word--back" aria-hidden="true">
+          <span class="finale-word__line"><span data-finale-line>潮去</span></span>
+          <span class="finale-word__line finale-word__line--ghost"><span data-finale-line>愿未散</span></span>
+        </div>
+        <div class="finale-word finale-word--front">
+          <h2 aria-label="潮去，愿未散">
+            <span class="finale-word__line finale-word__line--ghost"><span data-finale-line>潮去</span></span>
+            <span class="finale-word__line finale-word__line--2"><span data-finale-line>愿未散</span></span>
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer" id="contact">
+      <p class="site-footer__name">顺风化吉</p>
+      <p class="site-footer__line">A cinematic study of the Wang Ye boat ritual.</p>
+      <p class="site-footer__music-credit">
+        MUSIC · KEVIN MACLEOD — “MOUNTAIN EMPEROR” / “CLASH DEFIANT” · CC BY 4.0
+      </p>
+      <div class="site-footer__links">
+        <a href="#opening">回到开头 <span>TOP</span></a>
+        <a href="mailto:hello@example.com">联系项目 <span>CONTACT</span></a>
+      </div>
+      <p class="site-footer__note">电影化交互概念站 · 正式影像与地方仪式细节待校订</p>
+    </footer>
+  </main>
+
+  <div class="vow-modal" id="vow-modal" role="dialog" aria-modal="true" aria-labelledby="vow-title" aria-hidden="true">
+    <button class="vow-modal__close" type="button" aria-label="关闭祈愿窗口">关闭 <span>×</span></button>
+    <div class="vow-modal__inner">
+      <p class="eyebrow">A PRAYER TO THE TIDE · 向海许愿</p>
+      <h2 id="vow-title">顺风，化吉。</h2>
+      <p class="vow-modal__lead">
+        写下一句愿望。它不会被上传，只在你的浏览器里暂时留存。
+      </p>
+      <form class="vow-form">
+        <label for="vow-input">你的心愿 <span>YOUR VOW</span></label>
+        <textarea id="vow-input" maxlength="80" rows="3" placeholder="愿海上的人平安归来，愿岸上的人心有归处。"></textarea>
+        <div class="vow-form__meta">
+          <span><b id="vow-count">0</b> / 80</span>
+          <button type="submit">交给潮声 <span>RELEASE</span></button>
+        </div>
+      </form>
+      <p class="vow-modal__result" aria-live="polite"></p>
+    </div>
+    <div class="vow-embers" aria-hidden="true"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
